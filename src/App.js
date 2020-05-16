@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+// import Dashboard from "./Components/Dashboard";
+import { Container, Row, Col } from "reactstrap";
+import Navigation from "./Components/Navigation";
+import GraphicCard from "./Components/GraphicCard";
+import Dashboard from "./Components/Dashboard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        {/* <Container className="themed-container" fluid={true}>
+        <Navigation/>
+        </Container> */}
+
+        <Container className="themed-container" fluid="lg">
+        <Dashboard />
+          {/* <Row>
+            <Col lg="3"></Col>
+            <Col lg="9">
+              
+            </Col>
+          </Row> */}
+        </Container>
+      </div>
+    );
+  }
 }
-
-export default App;
