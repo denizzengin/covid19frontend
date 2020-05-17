@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import GraphicCard from "./GraphicCard";
 
-class Dashboard extends Component {
- 
 
+class Dashboard extends Component {
   render() {
     return (
       <div>
-        <GraphicCard         
-        />
+        <GraphicCard />
       </div>
     );
   }

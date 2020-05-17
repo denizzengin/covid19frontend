@@ -1,26 +1,55 @@
 import React, { Component } from "react";
-// import Dashboard from "./Components/Dashboard";
-import { Container, Row, Col } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  CardBody,
+  Card,
+  CardText,
+  CardHeader,
+  Jumbotron,
+  Label,
+} from "reactstrap";
 import Navigation from "./Components/Navigation";
-import GraphicCard from "./Components/GraphicCard";
 import Dashboard from "./Components/Dashboard";
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        {/* <Container className="themed-container" fluid={true}>
-        <Navigation/>
-        </Container> */}
-
-        <Container className="themed-container" fluid="lg">
-        <Dashboard />
-          {/* <Row>
-            <Col lg="3"></Col>
-            <Col lg="9">
-              
+        <Container>
+          <Row>
+            <br />
+          </Row>
+          <Row span="2">
+            <Col lg="12">
+              <Card>
+                <CardHeader>
+                  <h4>
+                    <Label style={{ color: "green" }}>Turkey </Label>
+                    <sub>
+                      <Label style={{ color: "red", fontStyle: "bold" }}>
+                        Covid-19
+                        <sub>
+                          <Label style={{ color: "orange" }}>ReactApp</Label>{" "}
+                        </sub>
+                      </Label>{" "}
+                    </sub>
+                  </h4>
+                </CardHeader>
+              </Card>
+              <br />
             </Col>
-          </Row> */}
+          </Row>
+
+          <Row xs="2">
+            <Col xs="3">
+              <Navigation />
+            </Col>
+            <Col xs="9">
+              <Dashboard />
+            </Col>
+          </Row>
         </Container>
       </div>
     );

@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import { Card, Row, Col, CardHeader, CardBody } from "reactstrap";
-import CoreGraphicLine from "./CoreGraphicLine";
-
+import {
+  Card,
+  Row,
+  Col,
+  CardHeader,
+  CardBody,
+  ListGroupItem,
+} from "reactstrap";
+import CoreGraphic from "./CoreGraphic";
+import * as chartTypes from "../Constants/ChartTypes";
+import ListGroupItemChecked from "./ListGroupItemChecked";
 class GraphicCard extends Component {
-  state = { graphDataInfo: [], data: [], isFinished: true };
+  state = { graphDataInfo: [], data: [] };
   getData = () => {
     fetch("http://localhost:3002/allcovid19")
       .then((response) => response.json())
@@ -12,15 +20,16 @@ class GraphicCard extends Component {
   };
 
   processData = (data) => {
-    //console.log(data);
     let processingData = { ...data };
-
     var result = Object.keys(processingData).map(function (key) {
       return [String(key), processingData[key]];
     });
-    let dataItem = { barDataKey: "", data: [], title: "" };
-    let temp = result[0];
-
+    let dataItem = {
+      barDataKey: "",
+      data: [],
+      title: "",
+      chartType: chartTypes.None,
+    };
     let tempResult = {};
     result.map((e) =>
       e[1]["Turkey"].map((f) =>
@@ -31,9 +40,7 @@ class GraphicCard extends Component {
           let keyForDate = e[0];
           keyForDate =
             keyForDate.substr(4, 4) +
-            //"-" +
             keyForDate.substr(2, 2) +
-            //"-" +
             keyForDate.substr(0, 2);
 
           keyForDate = parseInt(keyForDate, 10);
@@ -62,12 +69,16 @@ class GraphicCard extends Component {
       tempResult[a] = temp;
     });
 
-    //tempResult = { "TOPLAM VEFAT SAYISI": tempResult["TOPLAM VEFAT SAYISI"] };
-    console.log(tempResult);
-
     let _graphDataInfo = [];
+    let i = 0;
     Object.keys(tempResult).forEach((a) => {
-      dataItem.title = a;
+      i++;
+
+      dataItem.title = a
+        .split(" ")
+        .map(
+          (word) => word[0].toUpperCase() + word.slice(1).toLowerCase() + " "
+        );
       dataItem.barDataKey = "Turkey";
 
       let tempArray = tempResult[a];
@@ -85,34 +96,38 @@ class GraphicCard extends Component {
         });
       });
 
+      // Random diffirent types of chart get.
+      dataItem.chartType = i % 4 === 0 ? 1 : i % 4;
       dataItem.data = [...tempData];
-      console.log(dataItem.data);
       _graphDataInfo.push({ ...dataItem });
     });
 
+    console.log(dataItem);
     this.setState({ graphDataInfo: _graphDataInfo });
   };
 
   componentDidMount() {
     this.getData();
-    this.setState({ isFinished: true });
   }
 
   render() {
     return (
       <div>
-          <Row><br></br></Row>
         <Row>
           {this.state.graphDataInfo.map((item) => (
             <Col sm="6" key={item.title}>
-              <CardHeader> {item.title} </CardHeader>
+              <CardHeader>
+                <h6>
+                  <ListGroupItem> {item.title} </ListGroupItem>
+                </h6>
+              </CardHeader>
               <Card
                 className="shadow-lg p-3 mb-5 bg-white rounded"
                 body
                 color="warning"
               >
                 <CardBody>
-                  <CoreGraphicLine data={item.data} />
+                  <CoreGraphic data={item.data} chartType={item.chartType} />
                 </CardBody>
               </Card>
             </Col>
