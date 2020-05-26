@@ -3,11 +3,8 @@ import {
   Container,
   Row,
   Col,
-  CardBody,
   Card,
-  CardText,
   CardHeader,
-  Jumbotron,
   Label,
 } from "reactstrap";
 import Navigation from "./Components/Navigation";
@@ -21,7 +18,7 @@ export default class App extends Component {
           <Row>
             <br />
           </Row>
-          <Row span="2">
+          <Row>
             <Col lg="12">
               <Card>
                 <CardHeader>
@@ -42,7 +39,7 @@ export default class App extends Component {
             </Col>
           </Row>
 
-          <Row xs="2">
+          <Row>
             <Col xs="3">
               <Navigation />
             </Col>

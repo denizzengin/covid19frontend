@@ -8,22 +8,23 @@ export default class Navigation extends Component {
         <ListGroup>
           <ListGroupItemChecked
             color="success"
-            description="Toplam İyi̇leşen Hasta"
-          />
-          <ListGroupItemChecked color="success" description="Toplam Test" />
-          <ListGroupItemChecked
-            color="success"
             description="Bugünkü İyi̇leşen"
           />
-          <ListGroupItemChecked color="warning" description="Toplam Vaka" />
-          <ListGroupItemChecked color="warning" description="Bugünkü Test" />
-          <ListGroupItemChecked color="warning" description="Bugünkü Vaka" />
+          <ListGroupItemChecked color="success" description="Bugünkü Test" />
+          <ListGroupItemChecked color="success" description="Bugünkü Vaka" />
 
+          <ListGroupItemChecked color="success" description="Toplam Vaka" />
+          <ListGroupItemChecked color="success" description="Bugünkü Vefat" />
+
+          <ListGroupItemChecked
+            color="danger"
+            description="Toplam İyi̇leşen Hasta"
+          />
+          <ListGroupItemChecked color="danger" description="Toplam Test" />
           <ListGroupItemChecked
             color="danger"
             description="Toplam Entube Hasta"
           />
-          <ListGroupItemChecked color="danger" description="Bugünkü Vefat" />
 
           <ListGroupItemChecked color="danger" description="Toplam Vefat" />
           <ListGroupItemChecked

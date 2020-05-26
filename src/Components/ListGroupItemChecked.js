@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Badge, ListGroupItem } from "reactstrap";
-import * as logo from "../checked.png";
+import * as logo from "../StaticFiles/Images/checked.png";
 class ListGroupItemChecked extends Component {
   render() {
     return (

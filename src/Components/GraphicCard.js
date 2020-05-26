@@ -9,7 +9,6 @@ import {
 } from "reactstrap";
 import CoreGraphic from "./CoreGraphic";
 import * as chartTypes from "../Constants/ChartTypes";
-import ListGroupItemChecked from "./ListGroupItemChecked";
 class GraphicCard extends Component {
   state = { graphDataInfo: [], data: [] };
   getData = () => {
